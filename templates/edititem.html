@@ -1,0 +1,48 @@
+<html>
+    <head>
+    	<link rel=stylesheet type=text/css href="{{ url_for('static', filename='styles.css') }}">
+    </head>
+
+    <body>
+
+        <div class = 'toppane'>
+            <a class = 'titleref' href = "{{url_for('showCatalog')}}">CATALOG APPLICATION</a>
+        </div>
+
+        <div class = 'toplinksbox'>
+            <a class = 'linkbutton' href = "{{url_for('gdisconnect')}}">LOGOUT</a>
+            <a class = 'linkbutton' href = "{{url_for('showCatalog')}}">HOME</a>
+            <a class = 'linkbutton' href = "{{url_for('categoryJSON')}}" target = "_blank">JSON CATEGORIES</a>
+            <a class = 'linkbutton' href = "{{url_for('itemJSON')}}" target = "_blank">JSON ITEMS</a>
+        </div>
+
+        <div class = "pane">
+            <div class = 'block3'>
+                <section class = 'blocktitle'>
+                    <a class = 'descrCat' href = "{{url_for('showCategory', category_id = catitem.category.id)}}">{{catitem.category.name}}</a>:
+                    Edit {{catitem.name}}
+                </section>
+                <section class = 'descr'>
+                    Item Description: {{catitem.description}}</br></br>
+                </section>
+                <form action="#" method = "post">
+    				<div class="form-group">
+    					<label for="name">Edit Item Name:</label>
+                        </br>
+    					<input class="form-control" type ="text" maxlength="50" name="name" placeholder="Enter New Name">
+                        </br></br>
+    					<label for="descr">Edit Item Description:</label>
+                        </br>
+    					<textarea class="form-control" maxlength="250" rows="3" cols="80" name="descr" placeholder="Enter New Description (max length = 250 characters)"></textarea>
+                        </br></br>
+    					<button type="submit" class="btn btn-default" id="submit" type="submit">
+    					<span class="modbutton" aria-hidden="true">
+                        </span>EDIT</button>
+    				</div>
+    			</form>
+            </div>
+        </div>
+
+    </body>
+
+</html>

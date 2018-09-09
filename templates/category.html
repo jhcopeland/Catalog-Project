@@ -1,0 +1,62 @@
+<html>
+    <head>
+    	<link rel=stylesheet type=text/css href="{{ url_for('static', filename='styles.css') }}">
+    </head>
+
+    <body>
+
+        <div class = 'toppane'>
+            <a class = 'titleref' href = "{{url_for('showCatalog')}}">CATALOG APPLICATION</a>
+        </div>
+
+        <div class = 'toplinksbox'>
+            <a class = 'linkbutton' href = "{{url_for('gdisconnect')}}">LOGOUT</a>
+            <a class = 'linkbutton' href = "{{url_for('showCatalog')}}">HOME</a>
+            <a class = 'linkbutton' href = "{{url_for('categoryJSON')}}" target = "_blank">JSON CATEGORIES</a>
+            <a class = 'linkbutton' href = "{{url_for('itemJSON')}}" target = "_blank">JSON ITEMS</a>
+        </div>
+
+        <div class = 'flash'>
+			{% with messages = get_flashed_messages() %}
+			    {% if messages %}
+				    <ul>
+					    {% for message in messages %}
+					    	<li> <strong> {{ message }} </strong> </li>
+					    {% endfor %}
+				    </ul>
+			    {% endif %}
+		    {% endwith %}
+		</div>
+
+        <div class = "pane">
+            <div class = 'block1'>
+                <section class = 'blocktitle'>
+                    CATEGORIES
+                </section>
+                <section class = 'clist'>
+                    {% for dbcategory in dbcategories %}
+                        <a href = "{{url_for('showCategory', category_id = dbcategory.id)}}">{{dbcategory.name}}</a>
+                        </br></br>
+                    {% endfor %}
+                </section>
+            </div>
+
+            <div class = 'block2'>
+                <section class = 'blocktitle'>
+                    {{category.name}} Items
+                    <a class = 'linkbutton' href = "{{url_for('addItem', category_id = category.id)}}">ADD ITEM</a>
+                </section>
+                <section class = 'clist'>
+                    {% for catitem in catitems %}
+                        <a class = 'itembutton' href = "{{url_for('editItem', item_id = catitem.id)}}">EDIT</a>
+                        <a class = 'itembutton' href = "{{url_for('deleteItem', item_id = catitem.id)}}">DELETE</a>
+                        <a href = "{{url_for('showItemDescr', item_id = catitem.id)}}">{{catitem.name}}</a>
+                        </br></br>
+                    {% endfor %}
+                </section>
+            </div>
+        </div>
+
+    </body>
+
+</html>

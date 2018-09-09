@@ -1,0 +1,47 @@
+<html>
+    <head>
+    	<link rel=stylesheet type=text/css href="{{ url_for('static', filename='styles.css') }}">
+    </head>
+
+    <body>
+
+        <div class = 'toppane'>
+            <a class = 'titleref' href = "{{url_for('showCatalog')}}">CATALOG APPLICATION</a>
+        </div>
+
+        <div class = 'toplinksbox'>
+            <a class = 'linkbutton' href = "{{url_for('showLogin')}}">LOGIN</a>
+            <a class = 'linkbutton' href = "{{url_for('showCatalog')}}">HOME</a>
+        </div>
+
+        <div class = 'flash'>
+			{% with messages = get_flashed_messages() %}
+			    {% if messages %}
+				    <ul>
+					    {% for message in messages %}
+					    	<li> <strong> {{ message }} </strong> </li>
+					    {% endfor %}
+				    </ul>
+			    {% endif %}
+		    {% endwith %}
+		</div>
+
+        <div class = "pane">
+            <div class = 'block1'>
+                <section class = 'blocktitle'>
+                    CATEGORIES
+                </section>
+                <section class = 'list'></section>
+            </div>
+
+            <div class = 'block2'>
+                <section class = 'blocktitle'>
+                    LATEST ITEMS
+                </section>
+                <section class = 'list'></section>
+            </div>
+        </div>
+
+    </body>
+
+</html>

@@ -1,0 +1,59 @@
+<html>
+    <head>
+    	<link rel=stylesheet type=text/css href="{{ url_for('static', filename='styles.css') }}">
+    </head>
+
+    <body>
+
+        <div class = 'toppane'>
+            <a class = 'titleref' href = "{{url_for('showCatalog')}}">CATALOG APPLICATION</a>
+        </div>
+
+        <div class = 'toplinksbox'>
+            <a class = 'linkbutton' href = "{{url_for('gdisconnect')}}">LOGOUT</a>
+            <a class = 'linkbutton' href = "{{url_for('showCatalog')}}">HOME</a>
+            <a class = 'linkbutton' href = "{{url_for('categoryJSON')}}" target = "_blank">JSON CATEGORIES</a>
+            <a class = 'linkbutton' href = "{{url_for('itemJSON')}}" target = "_blank">JSON ITEMS</a>
+        </div>
+
+        <div class = 'flash'>
+			{% with messages = get_flashed_messages() %}
+			    {% if messages %}
+				    <ul>
+					    {% for message in messages %}
+					    	<li> <strong> {{ message }} </strong> </li>
+					    {% endfor %}
+				    </ul>
+			    {% endif %}
+		    {% endwith %}
+		</div>
+
+        <div class = "pane">
+            <div class = 'block1'>
+                <section class = 'blocktitle'>
+                    CATEGORIES
+                </section>
+                <section class = 'clist'>
+                    {% for dbcategory in dbcategories %}
+                        <a href = "{{url_for('showCategory', category_id = dbcategory.id)}}">{{dbcategory.name}}</a>
+                        </br></br>
+                    {% endfor %}
+                </section>
+            </div>
+
+            <div class = 'block2'>
+                <section class = 'blocktitle'>
+                    LATEST ITEMS
+                </section>
+                <section class = 'ilist'>
+                    {% for dbitem in dbitems %}
+                        {{dbitem.id}} - {{dbitem.name}} ({{dbitem.category.name}})
+                        </br></br>
+                    {% endfor %}
+                </section>
+            </div>
+        </div>
+
+    </body>
+
+</html>

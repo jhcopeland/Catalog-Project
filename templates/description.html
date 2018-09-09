@@ -1,0 +1,35 @@
+<html>
+    <head>
+    	<link rel=stylesheet type=text/css href="{{ url_for('static', filename='styles.css') }}">
+    </head>
+
+    <body>
+
+        <div class = 'toppane'>
+            <a class = 'titleref' href = "{{url_for('showCatalog')}}">CATALOG APPLICATION</a>
+        </div>
+
+        <div class = 'toplinksbox'>
+            <a class = 'linkbutton' href = "{{url_for('gdisconnect')}}">LOGOUT</a>
+            <a class = 'linkbutton' href = "{{url_for('showCatalog')}}">HOME</a>
+            <a class = 'linkbutton' href = "{{url_for('categoryJSON')}}" target = "_blank">JSON CATEGORIES</a>
+            <a class = 'linkbutton' href = "{{url_for('itemJSON')}}" target = "_blank">JSON ITEMS</a>
+        </div>
+
+        <div class = "pane">
+            <div class = 'block3'>
+                <section class = 'blocktitle'>
+                    <a class = 'descrCat' href = "{{url_for('showCategory', category_id = catitem.category.id)}}">{{catitem.category.name}}</a>:
+                    {{catitem.name}}
+                    <a class = 'linkbutton' href = "{{url_for('editItem', item_id = catitem.id)}}">EDIT</a>
+                    <a class = 'linkbutton' href = "{{url_for('deleteItem', item_id = catitem.id)}}">DELETE</a>
+                </section>
+                <section class = 'descr'>
+                    Item Description: {{catitem.description}}</br></br>
+                </section>
+            </div>
+        </div>
+
+    </body>
+
+</html>

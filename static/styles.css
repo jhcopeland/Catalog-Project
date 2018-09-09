@@ -1,0 +1,133 @@
+* {
+	font-family: "Helvetica Neue Bold", Roboto, Helvetica, Arial, sans-serif;
+	font-weight: 700;
+	color: red;
+}
+
+body {
+	background-color: #000033;
+}
+
+strong {
+ 	font-size: 16px;
+ 	color: yellow;
+ 	line-height: 24px;
+}
+
+a {
+	text-decoration: none;
+ 	font-size: 16px;
+ 	color: white;
+}
+
+label {
+	color: yellow;
+}
+
+.toppane {
+	background: linear-gradient(#3366cc, #2952a3);
+	border-top: 1px #a6a6a6 solid;
+	border-bottom: 1px black solid;
+	padding: 10px;
+	/*border: 2px solid green;
+	border-radius: 10px;*/
+}
+
+.toplinksbox {
+	background: linear-gradient(#666666, #595959);
+	border-top: 1px #a6a6a6 solid;
+	border-bottom: 1px black solid;
+	padding: 10px;
+	/*border: 2px solid green;*/
+}
+
+.linkbutton {
+	padding: 4px;
+	border: 1px solid #a6a6a6;
+	border-radius: 2px;
+	background: linear-gradient(#f2f2f2, #e6e6e6);
+	color: black;
+	font-weight: 400;
+}
+
+.itembutton {
+	padding: 2px;
+	border: 1px solid #a6a6a6;
+	border-radius: 2px;
+	background: linear-gradient(#f2f2f2, #e6e6e6);
+	color: black;
+	font-size: 12px;
+	font-weight: 550;
+	font-style: normal;
+}
+
+.titleref {
+	text-decoration: none;
+	font-size: 30px;
+	font-weight: bold;
+}
+
+.pane {
+	display: flex;
+}
+
+.block1,
+.block2,
+.block3 {
+	background: linear-gradient(#666666, #4d4d4d);
+	border-top: 1px #a6a6a6 solid;
+	border-bottom: 1px black solid;
+	border-left: 1px #a6a6a6 solid;
+	border-right: 1px black solid;
+}
+
+.block1 {
+	width:25%;
+}
+
+.block2 {
+	width:75%;
+}
+
+.block3 {
+    width:100%;
+}
+
+.blocktitle {
+	/*border: 2px solid yellow;*/
+	padding: 10px 0 0 10px;
+	font-family: "Helvetica Neue Light", Roboto, Helvetica, Arial, sans-serif;
+ 	font-size: 25px;
+ 	color: #3399ff;
+ 	/*line-height: 60px;*/
+ 	font-weight: 300;
+}
+
+.descrCat {
+	font-size: 25px;
+}
+
+.clist {
+	color: white;
+	padding: 20px 0 0 10px;
+}
+
+.ilist {
+	color: lightgrey;
+	padding: 20px 0 0 10px;
+	font-style: italic;
+}
+
+.descr {
+	color: #3399ff;
+	padding: 20px 0 0 10px;
+}
+
+.form-group {
+	color: #3399ff;
+	padding: 10px 0 0 10px;
+}
+
+.form-control {
+	color: black;
+}

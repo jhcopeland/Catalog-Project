@@ -3,6 +3,8 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
 from sqlalchemy import create_engine
 
+#engine = create_engine('sqlite:///usercategoryitem.db')
+engine = create_engine('postgresql://catalog:sunshine25@localhost/usercategoryitem')
 Base = declarative_base()
 
 class Category(Base):
@@ -32,7 +34,7 @@ class CatItem(Base):
     __tablename__ = 'cat_item'
 
     id = Column(Integer, primary_key = True)
-    name =Column(String(80), nullable = False)
+    name = Column(String(80), nullable = False)
     description = Column(String(250))
     cat_id = Column(Integer,ForeignKey('category.id'))
     category = relationship(Category)
@@ -48,7 +50,5 @@ class CatItem(Base):
                 'name': self.name,
                 'description': self.description,
         }
-
-engine = create_engine('sqlite:///usercategoryitem.db')
 
 Base.metadata.create_all(engine)

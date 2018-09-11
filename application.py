@@ -21,7 +21,8 @@ CLIENT_ID = json.loads(
 
 
 # Connect to Database ----------------------------
-engine = create_engine('sqlite:///usercategoryitem.db', connect_args={'check_same_thread':False})
+#engine = create_engine('sqlite:///usercategoryitem.db', connect_args={'check_same_thread':False})
+engine = create_engine('postgresql://catalog:sunshine25@localhost/usercategoryitem')
 Base.metadata.bind = engine
 
 # Create database session ------------------------
@@ -315,6 +316,5 @@ def itemJSON():
 #-------------------------------------------------
 if __name__ == '__main__':
 	app.secret_key = 'secret'
-	#app.debug = True
-	#app.run(host = '0.0.0.0', port = 80)
-	app.run()
+	app.debug = True
+	app.run(host = '0.0.0.0', port = 5000)

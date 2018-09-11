@@ -1,7 +1,7 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
-from database_setup import Base, User, Category, CatItem
+from database_setup import Base, CatUser, Category, CatItem
 
 #engine = create_engine('sqlite:///usercategoryitem.db')
 engine = create_engine('postgresql://catalog:sunshine25@localhost/usercategoryitem')
@@ -57,7 +57,7 @@ session.add(category9)
 session.commit()
 
 # Create default user
-user1 = User(name="Default User", email="default@email.com")
+user1 = CatUser(name="Default User", email="default@email.com")
 session.add(user1)
 session.commit()
 

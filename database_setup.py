@@ -22,8 +22,8 @@ class Category(Base):
         }
 
 
-class User(Base):
-    __tablename__ = 'user'
+class CatUser(Base):
+    __tablename__ = 'cat_user'
 
     id = Column(Integer, primary_key=True)
     name = Column(String(250), nullable=False)
@@ -38,8 +38,8 @@ class CatItem(Base):
     description = Column(String(250))
     cat_id = Column(Integer,ForeignKey('category.id'))
     category = relationship(Category)
-    user_id = Column(Integer,ForeignKey('user.id'))
-    user = relationship(User)
+    user_id = Column(Integer,ForeignKey('cat_user.id'))
+    user = relationship(CatUser)
 
     @property
     def serialize(self):

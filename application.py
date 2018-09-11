@@ -17,7 +17,7 @@ from flask import make_response
 import requests
 
 CLIENT_ID = json.loads(
-    open('client_secrets.json', 'r').read())['web']['client_id']
+    open('/var/www/catalog/client_secrets.json', 'r').read())['web']['client_id']
 
 
 # Connect to Database ----------------------------

@@ -34,7 +34,7 @@ session = DBSession()
 
 # Create anti-forgery state token ----------------
 # Store it in login_session for later validation -
-@app.route('/login')
+@app.route('/')
 def showLogin():
     state = ''.join(random.choice(string.ascii_uppercase + string.digits) for x in xrange(32))
     login_session['state'] = state
@@ -169,8 +169,9 @@ def gdisconnect():
         del login_session['username']
         del login_session['email']
         del login_session['picture']
-        flash("Logout Successful. Please login to utlize this application!")
-        return render_template('pubcatalog.html')
+        #flash("Logout Successful. Please login to utlize this application!")
+        #return render_template('pubcatalog.html')
+        return redirect(url_for('showLogin'))
     else:
         response = make_response(json.dumps('Failed to revoke token for given user.', 400))
         response.headers['Content-Type'] = 'application/json'
@@ -178,25 +179,20 @@ def gdisconnect():
 
 
 # Show catalog home -------------------------------
-@app.route('/')
 @app.route('/catalog')
 def showCatalog():
-    if 'username' not in login_session:
-        flash("Please login to utlize this application!")
-        return render_template('pubcatalog.html')
-    else:
-        db_category = session.query(Category)
-        db_catItem = session.query(CatItem).order_by(CatItem.id.desc()).limit(9)
-        #flash("%s Hello!" % login_session['username'])
-        return render_template('catalog.html', dbcategories = db_category, dbitems = db_catItem)
-
+    db_category = session.query(Category)
+    db_catItem = session.query(CatItem).order_by(CatItem.id.desc()).limit(9)
+    #flash("%s Hello!" % login_session['username'])
+    return render_template('catalog.html', dbcategories = db_category, dbitems = db_catItem)
 
 # Show items in category --------------------------
 @app.route('/catalog/<int:category_id>/')
 def showCategory(category_id):
     if 'username' not in login_session:
-        flash("Please login to utlize this application!")
-        return render_template('pubcatalog.html')
+        #flash("Please login to utlize this application!")
+        #return render_template('pubcatalog.html')
+        return redirect(url_for('showLogin'))
     else:
         db_category = session.query(Category)
         category = session.query(Category).filter_by(id=category_id).one()
@@ -207,8 +203,9 @@ def showCategory(category_id):
 @app.route('/catalog/description/<int:item_id>/')
 def showItemDescr(item_id):
     if 'username' not in login_session:
-        flash("Please login to utlize this application!")
-        return render_template('pubcatalog.html')
+        #flash("Please login to utlize this application!")
+        #return render_template('pubcatalog.html')
+        return redirect(url_for('showLogin'))
     else:
         cat_item = session.query(CatItem).filter_by(id=item_id).one()
         return render_template('description.html', catitem=cat_item)
@@ -217,8 +214,9 @@ def showItemDescr(item_id):
 @app.route('/catalog/add/<int:category_id>', methods=['GET', 'POST'])
 def addItem(category_id):
     if 'username' not in login_session:
-        flash("Please login to utlize this application!")
-        return render_template('pubcatalog.html')
+        #flash("Please login to utlize this application!")
+        #return render_template('pubcatalog.html')
+        return redirect(url_for('showLogin'))
     else:
         category = session.query(Category).filter_by(id=category_id).one()
         if request.method == 'POST':
@@ -242,8 +240,9 @@ def addItem(category_id):
 @app.route('/catalog/edit/<int:item_id>/', methods=['GET', 'POST'])
 def editItem(item_id):
     if 'username' not in login_session:
-        flash("Please login to utlize this application!")
-        return render_template('pubcatalog.html')
+        #flash("Please login to utlize this application!")
+        #return render_template('pubcatalog.html')
+        return redirect(url_for('showLogin'))
     else:
         cat_item = session.query(CatItem).filter_by(id=item_id).one()
         if cat_item.user_id != login_session['user_id']:
@@ -266,8 +265,9 @@ def editItem(item_id):
 @app.route('/catalog/delete/<int:item_id>/', methods=['GET', 'POST'])
 def deleteItem(item_id):
     if 'username' not in login_session:
-        flash("Please login to utlize this application!")
-        return render_template('pubcatalog.html')
+        #flash("Please login to utlize this application!")
+        #return render_template('pubcatalog.html')
+        return redirect(url_for('showLogin'))
     else:
         cat_item = session.query(CatItem).filter_by(id=item_id).one()
         category = cat_item.category
@@ -287,8 +287,9 @@ def deleteItem(item_id):
 @app.route('/catalog/JSON')
 def catalogJSON():
     if 'username' not in login_session:
-        flash("Please login to utlize this application!")
-        return render_template('pubcatalog.html')
+        #flash("Please login to utlize this application!")
+        #return render_template('pubcatalog.html')
+        return redirect(url_for('showLogin'))
     else:
         db_category = session.query(Category).order_by(Category.id)
         db_catItem = session.query(CatItem).order_by(CatItem.cat_id)
@@ -298,8 +299,9 @@ def catalogJSON():
 @app.route('/category/JSON')
 def categoryJSON():
     if 'username' not in login_session:
-        flash("Please login to utlize this application!")
-        return render_template('pubcatalog.html')
+        #flash("Please login to utlize this application!")
+        #return render_template('pubcatalog.html')
+        return redirect(url_for('showLogin'))
     else:
         db_category = session.query(Category)
         return jsonify(Category = [c.serialize for c in db_category])
@@ -308,8 +310,9 @@ def categoryJSON():
 @app.route('/item/JSON')
 def itemJSON():
     if 'username' not in login_session:
-        flash("Please login to utlize this application!")
-        return render_template('pubcatalog.html')
+        #flash("Please login to utlize this application!")
+        #return render_template('pubcatalog.html')
+        return redirect(url_for('showLogin'))
     else:
         db_catItem = session.query(CatItem)
         return jsonify(Item = [i.serialize for i in db_catItem])

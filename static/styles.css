@@ -25,12 +25,31 @@ label {
 }
 
 .toppane {
+	display: flex;
 	background: linear-gradient(#3366cc, #2952a3);
 	border-top: 1px #a6a6a6 solid;
 	border-bottom: 1px black solid;
 	padding: 10px;
-	/*border: 2px solid green;
+	/*border: 2px solid black;
 	border-radius: 10px;*/
+}
+
+.title {
+	width: 30%;
+	/*border: 2px solid black;*/
+	margin-top: auto;
+	margin-bottom: auto;
+}
+
+.titleref {
+	text-decoration: none;
+	font-size: 30px;
+	font-weight: bold;
+}
+
+.flash {
+	width: 70%;
+	/*border: 2px solid black;*/
 }
 
 .toplinksbox {
@@ -39,6 +58,7 @@ label {
 	border-bottom: 1px black solid;
 	padding: 10px;
 	/*border: 2px solid green;*/
+	margin-bottom: 10px;
 }
 
 .linkbutton {
@@ -59,12 +79,6 @@ label {
 	font-size: 12px;
 	font-weight: 550;
 	font-style: normal;
-}
-
-.titleref {
-	text-decoration: none;
-	font-size: 30px;
-	font-weight: bold;
 }
 
 .pane {

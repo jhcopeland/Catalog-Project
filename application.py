@@ -181,6 +181,10 @@ def gdisconnect():
 # Show catalog home -------------------------------
 @app.route('/catalog')
 def showCatalog():
+    if 'username' not in login_session:
+        #flash("Please login to utlize this application!")
+        #return render_template('pubcatalog.html')
+        return redirect(url_for('showLogin'))
     db_category = session.query(Category)
     db_catItem = session.query(CatItem).order_by(CatItem.id.desc()).limit(9)
     #flash("%s Hello!" % login_session['username'])

@@ -19,7 +19,7 @@ app = Flask(__name__)
 app.secret_key = os.urandom(24)
 
 CLIENT_ID = json.loads(
-    open('/var/www/catalog/client_secrets.json', 'r').read())['web']['client_id']
+    open('/var/www/catalog/web_client_secret.json', 'r').read())['web']['client_id']
 
 
 # Connect to Database ----------------------------

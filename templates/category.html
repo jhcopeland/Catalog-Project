@@ -6,7 +6,21 @@
     <body>
 
         <div class = 'toppane'>
-            <a class = 'titleref' href = "{{url_for('showCatalog')}}">CATALOG APPLICATION</a>
+            <div class = 'title'>
+                <a class = 'titleref' href = "{{url_for('showCatalog')}}">CATALOG APPLICATION</a>
+            </div>
+
+            <div class = 'flash'>
+                {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                        <ul>
+                            {% for message in messages %}
+                                <li> <strong> {{ message }} </strong> </li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                {% endwith %}
+            </div>
         </div>
 
         <div class = 'toplinksbox'>
@@ -15,18 +29,6 @@
             <a class = 'linkbutton' href = "{{url_for('categoryJSON')}}" target = "_blank">JSON CATEGORIES</a>
             <a class = 'linkbutton' href = "{{url_for('itemJSON')}}" target = "_blank">JSON ITEMS</a>
         </div>
-
-        <div class = 'flash'>
-			{% with messages = get_flashed_messages() %}
-			    {% if messages %}
-				    <ul>
-					    {% for message in messages %}
-					    	<li> <strong> {{ message }} </strong> </li>
-					    {% endfor %}
-				    </ul>
-			    {% endif %}
-		    {% endwith %}
-		</div>
 
         <div class = "pane">
             <div class = 'block1'>

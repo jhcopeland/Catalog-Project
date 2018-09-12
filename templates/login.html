@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="shortcut icon" href="">
         <!--LOAD PRE-REQUISITES FOR GOOGLE SIGN IN -->
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js">
         </script>
@@ -34,7 +35,7 @@
 
                 // Send the one-time-use code to the server, if the server
                 // responds, write a 'login successful' message to the web page
-                // and then redirect back to the main restaurants page
+                // and then redirect back to the catalog page
                 $.ajax({
                     type: 'POST',
                     url: '/gconnect?state={{STATE}}',
@@ -44,6 +45,7 @@
                     success: function(result) {
                         // Handle or verify the server response if necessary.
                         if (result) {
+                            console.log('Login successful!');
                             window.location.href = "/catalog";
                         } else if (authResult['error']) {
                             console.log('There was an error: ' + authResult['error']);

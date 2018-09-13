@@ -34,7 +34,7 @@ session = DBSession()
 
 # Create anti-forgery state token ----------------
 # Store it in login_session for later validation -
-@app.route('/')
+@app.route('/login')
 def showLogin():
     state = ''.join(random.choice(string.ascii_uppercase + string.digits) for x in xrange(32))
     login_session['state'] = state
@@ -179,7 +179,7 @@ def gdisconnect():
 
 
 # Show catalog home -------------------------------
-@app.route('/catalog')
+@app.route('/')
 def showCatalog():
     if 'username' not in login_session:
         #flash("Please login to utlize this application!")

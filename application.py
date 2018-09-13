@@ -125,7 +125,7 @@ def gconnect():
     #output += login_session['picture']
     #output += ' " style = "width: 300px; height: 300px;border-radius: 150px;-webkit-border-radius: 150px;-moz-border-radius: 150px;"> '
     #print "done!"
-    flash("You are now logged in as %s" % login_session['username'])
+    #flash("You are now logged in as %s" % login_session['username'])
     return redirect(url_for('showCatalog'))
 
 # User Helper Functions
@@ -190,7 +190,7 @@ def showCatalog():
         return redirect(url_for('showLogin'))
     db_category = session.query(Category)
     db_catItem = session.query(CatItem).order_by(CatItem.id.desc()).limit(9)
-    #flash("%s Hello!" % login_session['username'])
+    flash("%s Hello!" % login_session['username'])
     return render_template('catalog.html', dbcategories = db_category, dbitems = db_catItem)
 
 # Show items in category --------------------------

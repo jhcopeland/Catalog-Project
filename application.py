@@ -152,7 +152,7 @@ def getUserID(email):
 # and reset their login_session
 @app.route('/gdisconnect')
 def gdisconnect():
-    #access_token = login_session.get('access_token')
+    access_token = login_session.get('access_token')
     if access_token is None:
     #if 'username' not in login_session:
         #print 'Access Token is None'

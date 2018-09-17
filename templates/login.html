@@ -39,7 +39,7 @@
                 console.log('Issuing Ajax request...');
                 $.ajax({                    
                     type: 'POST',
-                    url: '/gconnect?state={{STATE}}',
+                    url: 'http://54.88.238.141/gconnect?state={{STATE}}',
                     processData: false,
                     data: authResult['code'],
                     contentType: 'application/octet-stream; charset=utf-8',

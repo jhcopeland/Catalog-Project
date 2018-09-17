@@ -47,7 +47,7 @@
                         // Handle or verify the server response if necessary.
                         if (result) {
                             console.log('...successful!');
-                            window.location.href = '';
+                            window.location.assign(window.location.hostname);
                         } else if (authResult['error']) {
                             console.log('There was an error: ' + authResult['error']);
                         } else {
